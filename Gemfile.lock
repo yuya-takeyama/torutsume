@@ -119,7 +119,7 @@ DEPENDENCIES
   rails (= 4.0.1)
   sass-rails (~> 4.0.0)
   sdoc
-  spring
+  spring (~> 1.0.0)
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)
