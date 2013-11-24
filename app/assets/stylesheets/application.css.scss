@@ -11,5 +11,8 @@
  *= require_self
  *= require_tree .
  */
-@import "twitter/bootstrap"
-@import "twitter/bootstrap-responsive"
+@import "twitter/bootstrap";
+
+body {
+  padding-top: 60px;
+}
