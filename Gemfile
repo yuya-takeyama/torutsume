@@ -46,4 +46,22 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'json', '1.7.7'
-gem 'spring', '~> 1.0.0'
+
+group :development, :test do
+  gem 'spring', '~> 1.0.0'
+  gem 'rspec-rails', '~> 2.0'
+  gem 'guard-rspec', '~> 3.1.0'
+  gem 'guard-spring', '~> 0.0.4'
+  gem 'spring-commands-rspec', '~> 1.0.0', require: false
+
+  gem 'pry-rails', '~> 0.3.2'
+  gem 'pry-doc', '~> 0.4.6'
+  gem 'pry-stack_explorer', '~> 0.4.9'
+  gem 'pry-byebug', '~> 1.2.0'
+
+  gem 'better_errors', '~> 1.0.1'
+  gem 'binding_of_caller', '~> 0.7.2'
+
+  gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'database_rewinder', '~> 0.0.2'
+end
