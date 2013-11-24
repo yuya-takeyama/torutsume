@@ -6,6 +6,15 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook],
          :stretches => 10
 
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session['devise.facebook_data']
+        user.facebook_id    = data['uid']
+        user.facebook_token = data['credentials']['token']
+      end
+    end
+  end
+
   def self.find_for_facebook_oauth(access_token, signed_in_resource = nil)
     data = access_token.extra.raw_info
     User.where(:facebook_id => data.id).first
