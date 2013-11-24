@@ -48,6 +48,8 @@ end
 gem 'json', '1.7.7'
 gem 'slim-rails', '~> 2.0.3'
 gem 'friendly_id', '~> 5.0.1'
+gem 'omniauth', '~> 1.1.4'
+gem 'devise', '~> 3.2.1'
 
 group :development, :test do
   gem 'spring', '~> 1.0.0'

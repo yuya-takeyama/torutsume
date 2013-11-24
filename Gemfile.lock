@@ -27,6 +27,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    bcrypt-ruby (3.1.2)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -53,6 +54,12 @@ GEM
     database_rewinder (0.0.2)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
+    devise (3.2.1)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -77,6 +84,7 @@ GEM
     guard-spring (0.0.4)
       guard
       spring
+    hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.2)
@@ -98,6 +106,10 @@ GEM
     mime-types (1.25)
     minitest (4.7.5)
     multi_json (1.8.2)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
+      rack
+    orm_adapter (0.5.0)
     polyglot (0.3.3)
     pry (0.9.12.4)
       coderay (~> 1.0)
@@ -196,6 +208,8 @@ GEM
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    warden (1.2.3)
+      rack (>= 1.0)
     yard (0.8.7.3)
 
 PLATFORMS
@@ -207,6 +221,7 @@ DEPENDENCIES
   bootstrap-sass-rails (~> 3.0.2)
   coffee-rails (~> 4.0.0)
   database_rewinder (~> 0.0.2)
+  devise (~> 3.2.1)
   factory_girl_rails (~> 4.2.1)
   friendly_id (~> 5.0.1)
   guard-rspec (~> 3.1.0)
@@ -214,6 +229,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   json (= 1.7.7)
+  omniauth (~> 1.1.4)
   pry-byebug (~> 1.2.0)
   pry-doc (~> 0.4.6)
   pry-rails (~> 0.3.2)
