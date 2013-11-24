@@ -1,3 +1,4 @@
+*.swp
 /.bundle
 /config/application.yml
 /db/*.sqlite3
