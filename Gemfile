@@ -46,6 +46,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'json', '1.7.7'
+gem 'slim-rails', '~> 2.0.3'
 
 group :development, :test do
   gem 'spring', '~> 1.0.0'
