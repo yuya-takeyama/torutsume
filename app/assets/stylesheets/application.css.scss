@@ -16,3 +16,7 @@
 body {
   padding-top: 60px;
 }
+
+.alert-notice {
+  @extend .alert-success
+}
