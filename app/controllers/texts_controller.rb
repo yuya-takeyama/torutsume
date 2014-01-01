@@ -6,7 +6,7 @@ class TextsController < ApplicationController
   # GET /texts
   # GET /texts.json
   def index
-    @texts = Text.all
+    @texts = Text.all.order(id: :desc)
   end
 
   # GET /texts/1
