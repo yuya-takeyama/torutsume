@@ -1,15 +1,15 @@
-p#notice = notice
+.btn-group
+  = link_to 'Back', texts_path, class: 'btn btn-default'
+  = link_to 'Edit', edit_text_path(@text), class: 'btn btn-default'
 
-p
-  strong User:
-  = @text.user
-p
-  strong Subject:
-  = @text.subject
-p
-  strong Body:
-  = @text.body
+h2 = @text.subject
 
-= link_to 'Edit', edit_text_path(@text)
-'|
-= link_to 'Back', texts_path
+pre = @text.body
+
+dl.dl-horizontal
+  dt Posted by
+  dd = @text.user.email
+  dt Posted at
+  dd = @text.created_at
+  dt Updated at
+  dd = @text.updated_at
