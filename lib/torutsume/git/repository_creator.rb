@@ -3,9 +3,10 @@ module Torutsume
     class RepositoryCreator
       attr_reader :error
 
-      def initialize(repository_class: repository_class, repository_path_finder: path_finder)
+      def initialize(repository_class: _, repository_path_finder: _, commit_writer: _)
         @repository_path_finder = repository_path_finder
         @repository_class = repository_class
+        @commit_writer = commit_writer
       end
 
       def create(text)
@@ -14,21 +15,7 @@ module Torutsume
 
         begin
           repo  = @repository_class.init_at(path, :bare)
-          oid   = repo.write(text.body, :blob)
-          index = Rugged::Index.new
-          index.add(path: 'body.txt', oid: oid, mode: 0100644)
-
-          options = {}
-
-          options[:tree] = index.write_tree(repo)
-
-          options[:author] = {email: user.email, name: 'Test Author', time: Time.now}
-          options[:committer] = {email: user.email, name: 'Test Author', time: Time.now}
-          options[:message] = ''
-          options[:parents] = []
-          options[:update_ref] = 'HEAD'
-
-          Rugged::Commit.create(repo, options)
+          @commit_writer.write(repository: repo, user: user, text: text)
 
           repo
         rescue => e

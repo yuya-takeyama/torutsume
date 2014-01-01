@@ -5,6 +5,7 @@ module Torutsume
         RepositoryCreator.new(
           repository_class: repository_class,
           repository_path_finder: repository_path_finder,
+          commit_writer: commit_writer,
         )
       end
 
@@ -12,6 +13,12 @@ module Torutsume
         finder = double('finder')
         allow(finder).to receive(:find).and_return(repository_path)
         finder
+      end
+
+      let(:commit_writer) do
+        commit_writer = double('commit_writer')
+        allow(commit_writer).to receive(:write)
+        commit_writer
       end
 
       let(:repository_path) { '/path/repo/1' }
