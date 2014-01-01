@@ -46,6 +46,7 @@ module Torutsume
             expect(subject.text.subject).to eq('Subject')
             expect(subject.text.body).to eq('Body')
             expect(subject.text).to_not be_persisted
+            expect(subject.error.message).to eq('Some error occured')
             expect(::Text.count).to eq(0)
           end
         end

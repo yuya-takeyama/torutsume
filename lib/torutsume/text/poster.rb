@@ -15,10 +15,15 @@ module Torutsume
 
         @texts_table.transaction do
           begin
-            raise ActiveRecord::Rollback unless text.save
-            result = @repo_creator.create(text)
-            raise ActiveRecord::Rollback unless result
+            raise 'Failed to save Text' unless text.save
+
+            result = @repo_creator.create(user: user, text: text)
+            raise @repo_creator.error unless result
+
             return PostResult.new(status: true, text: text)
+          rescue => e
+            @error = e
+            raise ActiveRecord::Rollback.new(e)
           end
         end
 
@@ -28,7 +33,7 @@ module Torutsume
           subject: text.subject,
           body: text.body,
         )
-        PostResult.new(status: false, text: new_text, error: @repo_creator.error)
+        PostResult.new(status: false, text: new_text, error: @error || nil)
       end
     end
   end
