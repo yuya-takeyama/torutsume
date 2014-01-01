@@ -9,9 +9,8 @@ module Torutsume
         @commit_writer = commit_writer
       end
 
-      def create(text)
+      def create(user: user, text: text)
         path = @repository_path_finder.find(text)
-        user = text.user
 
         begin
           repo  = @repository_class.init_at(path, :bare)

@@ -24,9 +24,10 @@ module Torutsume
       let(:repository_path) { '/path/repo/1' }
 
       let(:text) { ::Text.new(id: 1) }
+      let(:user) { build :user }
 
       describe '#create' do
-        subject { creator.create(text) }
+        subject { creator.create(user: user, text: text) }
 
         context 'when succeeded' do
           let(:repository_class) do
