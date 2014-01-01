@@ -10,15 +10,31 @@ module Torutsume
 
       def create(text)
         path = @repository_path_finder.find(text)
+        user = text.user
 
         begin
-          repository = @repository_class.init_at(path, :bare)
+          repo  = @repository_class.init_at(path, :bare)
+          oid   = repo.write(text.body, :blob)
+          index = Rugged::Index.new
+          index.add(path: 'body.txt', oid: oid, mode: 0100644)
+
+          options = {}
+
+          options[:tree] = index.write_tree(repo)
+
+          options[:author] = {email: user.email, name: 'Test Author', time: Time.now}
+          options[:committer] = {email: user.email, name: 'Test Author', time: Time.now}
+          options[:message] = ''
+          options[:parents] = []
+          options[:update_ref] = 'HEAD'
+
+          Rugged::Commit.create(repo, options)
+
+          repo
         rescue => e
           @error = e
-          return nil
+          nil
         end
-
-        repository
       end
     end
   end
