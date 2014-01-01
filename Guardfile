@@ -1,4 +1,4 @@
-guard 'rspec', :cmd => 'spring rspec -f doc --color' do
+guard 'rspec', cmd: 'spring rspec -f doc --color', failed_mode: :none do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^spec/spec_helper\.rb$})                   { |m| 'spec' }
   watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
