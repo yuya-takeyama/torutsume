@@ -10,10 +10,12 @@ module Torutsume
         )
       end
 
+      let(:valid_params) { {subject: 'Subject', body: 'Body'} }
+
       let(:user) { User.new(id: 1) }
 
       describe '#create' do
-        subject { poster.create(user: user, subject: 'Subject', body: 'Body') }
+        subject { poster.create(user: user, params: valid_params) }
 
         context 'when succeeded' do
           let(:repository_writer) do

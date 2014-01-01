@@ -28,8 +28,7 @@ class TextsController < ApplicationController
   def create
     result = Dee['text.poster'].create(
       user: current_user,
-      subject: text_params[:subject],
-      body: text_params[:body],
+      params: text_params,
     )
     @text = result.text
 
@@ -47,8 +46,17 @@ class TextsController < ApplicationController
   # PATCH/PUT /texts/1
   # PATCH/PUT /texts/1.json
   def update
+    @text.update_attributes(text_params)
+
+    result = Dee['text.poster'].update(
+      user: current_user,
+      text: @text,
+      params: text_params,
+      message: params[:commit_message]
+    )
+
     respond_to do |format|
-      if @text.update(text_params)
+      if result.ok?
         format.html { redirect_to @text, notice: 'Text was successfully updated.' }
         format.json { head :no_content }
       else

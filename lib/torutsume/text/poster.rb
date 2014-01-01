@@ -6,11 +6,11 @@ module Torutsume
         @repository_writer = repository_writer
       end
 
-      def create(user: _, subject: _, body: _)
+      def create(user: _, params: _)
         text = @texts_table.new(
           user: user,
-          subject: subject,
-          body: body,
+          subject: params[:subject],
+          body: params[:body],
         )
 
         @texts_table.transaction do
@@ -36,10 +36,10 @@ module Torutsume
         PostResult.new(status: false, text: new_text, error: @error || nil)
       end
 
-      def update(user: _, text: text, message: nil)
+      def update(user: _, text: _, params: _, message: nil)
         @texts_table.transaction do
           begin
-            raise 'Failed to update Text' unless text.save
+            raise 'Failed to update Text' unless text.update(params)
 
             result = @repository_writer.update(user: user, text: text, message: message)
             raise @repository_writer.error unless result
