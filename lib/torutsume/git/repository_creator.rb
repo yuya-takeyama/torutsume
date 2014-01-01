@@ -1,6 +1,5 @@
 module Torutsume
   module Git
-
     class RepositoryCreator
       attr_reader :error
 
