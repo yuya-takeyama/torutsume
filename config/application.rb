@@ -21,3 +21,5 @@ module Torutsume
     # config.i18n.default_locale = :de
   end
 end
+
+require File.join(Rails.root, 'lib', 'torutsume')

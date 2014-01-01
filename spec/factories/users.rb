@@ -1,6 +1,7 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
-  factory :user do
+  factory :user, :class => User do
+    id { 1000 }
+    email { 'testuser@example.com' }
+    password { 'password' }
   end
 end

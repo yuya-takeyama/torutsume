@@ -1,0 +1,23 @@
+h1 Listing texts
+
+table
+  tr
+    th User
+    th Subject
+    th Body
+    th
+    th
+    th
+
+  - @texts.each do |text|
+    tr
+      td = text.user
+      td = text.subject
+      td = text.body
+      td = link_to 'Show', text
+      td = link_to 'Edit', edit_text_path(text)
+      td = link_to 'Destroy', text, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Text', new_text_path

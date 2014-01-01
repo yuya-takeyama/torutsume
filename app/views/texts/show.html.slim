@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong User:
+  = @text.user
+p
+  strong Subject:
+  = @text.subject
+p
+  strong Body:
+  = @text.body
+
+= link_to 'Edit', edit_text_path(@text)
+'|
+= link_to 'Back', texts_path
