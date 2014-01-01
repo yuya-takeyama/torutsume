@@ -24,7 +24,7 @@ describe TextsController do
   # This should return the minimal set of attributes required to create a valid
   # Text. As you add validations to Text, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { user_id: 1 } }
+  let(:valid_attributes) { {user_id: 1, subject: 'Subject', body: 'Body'} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -116,8 +116,8 @@ describe TextsController do
         # specifies that the Text created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Text.any_instance.should_receive(:update).with({ "user" => "" })
-        put :update, {:id => text.to_param, :text => { "user" => "" }}, valid_session
+        Text.any_instance.should_receive(:update).with({'subject' => 'Subject', 'body' => 'Body'})
+        put :update, {:id => text.to_param, :text => {subject: 'Subject', body: 'Body'}}, valid_session
       end
 
       it "assigns the requested text as @text" do
