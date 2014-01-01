@@ -2,8 +2,8 @@ module Torutsume
   module Text
     class Poster
       def initialize(texts_table: _, repository_writer: _)
-        @texts_table  = texts_table
-        @repo_creator = repository_writer
+        @texts_table = texts_table
+        @repository_writer = repository_writer
       end
 
       def create(user: _, subject: _, body: _)
@@ -17,8 +17,8 @@ module Torutsume
           begin
             raise 'Failed to save Text' unless text.save
 
-            result = @repo_creator.create(user: user, text: text)
-            raise @repo_creator.error unless result
+            result = @repository_writer.create(user: user, text: text)
+            raise @repository_writer.error unless result
 
             return PostResult.new(status: true, text: text)
           rescue => e
