@@ -1,5 +1,7 @@
 class TextsController < ApplicationController
   before_action :set_text, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :check_permission!, only: [:edit, :update, :destroy]
 
   # GET /texts
   # GET /texts.json
@@ -25,6 +27,7 @@ class TextsController < ApplicationController
   # POST /texts.json
   def create
     @text = Text.new(text_params)
+    @text.user = current_user
 
     respond_to do |format|
       if @text.save
@@ -69,6 +72,14 @@ class TextsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def text_params
-      params.require(:text).permit(:user_id, :subject, :body)
+      params.require(:text).permit(:subject, :body)
+    end
+
+    def authenticate!
+      raise 'You should be logged in' unless user_signed_in?
+    end
+
+    def check_permission!
+      raise 'Not permitted' unless current_user.id == @text.user_id
     end
 end
