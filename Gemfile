@@ -60,8 +60,7 @@ gem 'rugged', '~> 0.19.0'
 group :development, :test do
   gem 'spring', '~> 1.0.0'
   gem 'rspec-rails', '~> 2.0'
-  gem 'guard-rspec', '~> 3.1.0'
-  gem 'guard-spring', '~> 0.0.4'
+  gem 'guard-rspec', '~> 4.2.3'
   gem 'spring-commands-rspec', '~> 1.0.0', require: false
 
   gem 'pry-rails', '~> 0.3.2'
