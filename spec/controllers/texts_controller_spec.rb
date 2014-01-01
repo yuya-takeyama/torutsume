@@ -19,15 +19,16 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe TextsController do
+  include Devise::TestHelpers
 
   # This should return the minimal set of attributes required to create a valid
   # Text. As you add validations to Text, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "user" => "" } }
+  let(:valid_attributes) { { user_id: 1 } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # TextsController. Be sure to keep this updated too.
+  # TextsConroller. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET index" do
@@ -47,6 +48,8 @@ describe TextsController do
   end
 
   describe "GET new" do
+    before { sign_in_as_valid_user }
+
     it "assigns a new text as @text" do
       get :new, {}, valid_session
       assigns(:text).should be_a_new(Text)
@@ -54,6 +57,8 @@ describe TextsController do
   end
 
   describe "GET edit" do
+    before { sign_in_as_valid_user }
+
     it "assigns the requested text as @text" do
       text = Text.create! valid_attributes
       get :edit, {:id => text.to_param}, valid_session
@@ -62,7 +67,10 @@ describe TextsController do
   end
 
   describe "POST create" do
+    before { sign_in_as_valid_user }
+
     describe "with valid params" do
+
       it "creates a new Text" do
         expect {
           post :create, {:text => valid_attributes}, valid_session
@@ -99,6 +107,8 @@ describe TextsController do
   end
 
   describe "PUT update" do
+    before { sign_in_as_valid_user }
+
     describe "with valid params" do
       it "updates the requested text" do
         text = Text.create! valid_attributes
@@ -143,6 +153,8 @@ describe TextsController do
   end
 
   describe "DELETE destroy" do
+    before { sign_in_as_valid_user }
+
     it "destroys the requested text" do
       text = Text.create! valid_attributes
       expect {
@@ -157,4 +169,8 @@ describe TextsController do
     end
   end
 
+  def sign_in_as_valid_user
+    FactoryGirl.create :user, {id: 1, email: 'foo@example.com', password: 'password'}
+    sign_in User.find(1)
+  end
 end
