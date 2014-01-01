@@ -54,6 +54,7 @@ gem 'omniauth', '~> 1.1.4'
 gem 'omniauth-facebook', '~> 1.5.1'
 gem 'devise', '~> 3.2.1'
 gem 'figaro', '~> 0.7.0'
+gem 'dee-rails', '~> 0.0.1'
 
 group :development, :test do
   gem 'spring', '~> 1.0.0'
