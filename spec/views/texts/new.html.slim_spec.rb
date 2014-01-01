@@ -14,7 +14,6 @@ describe "texts/new" do
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form[action=?][method=?]", texts_path, "post" do
-      assert_select "input#text_user[name=?]", "text[user]"
       assert_select "input#text_subject[name=?]", "text[subject]"
       assert_select "textarea#text_body[name=?]", "text[body]"
     end
