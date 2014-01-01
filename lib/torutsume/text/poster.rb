@@ -6,7 +6,7 @@ module Torutsume
         @repo_creator = repository_creator
       end
 
-      def post(user: _, subject: _, body: _)
+      def create(user: _, subject: _, body: _)
         text = @texts_table.new(
           user: user,
           subject: subject,

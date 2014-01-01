@@ -14,7 +14,12 @@ module Torutsume
 
         begin
           repo  = @repository_class.init_at(path, :bare)
-          @commit_writer.write(repository: repo, user: user, text: text)
+          @commit_writer.write(
+            repository: repo,
+            user: user,
+            text: text,
+            initial: true,
+          )
 
           repo
         rescue => e

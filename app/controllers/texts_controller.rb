@@ -26,7 +26,7 @@ class TextsController < ApplicationController
   # POST /texts
   # POST /texts.json
   def create
-    result = Dee['text.poster'].post(
+    result = Dee['text.poster'].create(
       user: current_user,
       subject: text_params[:subject],
       body: text_params[:body],

@@ -12,8 +12,8 @@ module Torutsume
 
       let(:user) { User.new(id: 1) }
 
-      describe '#post' do
-        subject { poster.post(user: user, subject: 'Subject', body: 'Body') }
+      describe '#create' do
+        subject { poster.create(user: user, subject: 'Subject', body: 'Body') }
 
         context 'when succeeded' do
           let(:repository_creator) do
