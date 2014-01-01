@@ -4,7 +4,9 @@ describe TextsController do
   # This should return the minimal set of attributes required to create a valid
   # Text. As you add validations to Text, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { {user_id: 1, subject: 'Subject', body: 'Body'} }
+  let(:valid_attributes) { {user_id: valid_user.id, subject: 'Subject', body: 'Body'} }
+
+  let(:valid_user) { create :user }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -150,7 +152,6 @@ describe TextsController do
   end
 
   def sign_in_as_valid_user
-    FactoryGirl.create :user, {id: 1, email: 'foo@example.com', password: 'password'}
-    sign_in User.find(1)
+    sign_in valid_user
   end
 end
