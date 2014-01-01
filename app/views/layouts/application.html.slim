@@ -19,6 +19,9 @@ html
             span.icon-bar
           a.navbar-brand href="/" Torutsume
         .collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar
+            li
+              == link_to 'Texts', texts_path
           - if user_signed_in?
             ul.nav.navbar-nav.navbar-right
               li.dropdown
