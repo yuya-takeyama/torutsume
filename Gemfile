@@ -45,7 +45,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'json', '1.7.7'
+gem 'json', '>= 1.7'
 gem 'slim-rails', '~> 2.0.3'
 gem 'friendly_id', '~> 5.0.1'
 gem 'omniauth', '~> 1.1.4'
