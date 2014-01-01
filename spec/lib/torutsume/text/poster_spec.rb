@@ -22,10 +22,11 @@ module Torutsume
             repository_creator
           end
 
-          it 'should return created Text object' do
-            expect(subject.subject).to eq('Subject')
-            expect(subject.body).to eq('Body')
-            expect(subject).to be_persisted
+          it 'should be ok result' do
+            expect(subject).to be_ok
+            expect(subject.text.subject).to eq('Subject')
+            expect(subject.text.body).to eq('Body')
+            expect(subject.text).to be_persisted
             expect(::Text.count).to eq(1)
           end
         end
@@ -40,9 +41,11 @@ module Torutsume
 
           let(:error) { StandardError.new 'Some error occured' }
 
-          it 'should return created Text object' do
-            expect(subject).to be_nil
-            expect(poster.error).to be_equal(error)
+          it 'should be error result' do
+            expect(subject).to be_error
+            expect(subject.text.subject).to eq('Subject')
+            expect(subject.text.body).to eq('Body')
+            expect(subject.text).to_not be_persisted
             expect(::Text.count).to eq(0)
           end
         end

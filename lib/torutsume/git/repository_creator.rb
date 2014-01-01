@@ -10,12 +10,15 @@ module Torutsume
 
       def create(text)
         path = @repository_path_finder.find(text)
+
         begin
-          @repository_class.init_at(path, :bare)
+          repository = @repository_class.init_at(path, :bare)
         rescue => e
           @error = e
-          nil
+          return nil
         end
+
+        repository
       end
     end
   end

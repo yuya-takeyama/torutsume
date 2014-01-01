@@ -26,11 +26,17 @@ class TextsController < ApplicationController
   # POST /texts
   # POST /texts.json
   def create
-    @text = Text.new(text_params)
-    @text.user = current_user
+    @text = Dee['text.poster'].post(
+      user: current_user,
+      subject: text_params[:subject],
+      body: text_params[:body],
+    )
+
+    p text_params[:subject]
+    p text_params[:body]
 
     respond_to do |format|
-      if @text.save
+      if @text
         format.html { redirect_to @text, notice: 'Text was successfully created.' }
         format.json { render action: 'show', status: :created, location: @text }
       else
