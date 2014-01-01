@@ -1,8 +1,8 @@
 module Torutsume
   module Git
-    describe RepositoryCreator do
+    describe RepositoryWriter do
       let(:creator) do
-        RepositoryCreator.new(
+        RepositoryWriter.new(
           repository_class: repository_class,
           repository_path_finder: repository_path_finder,
           commit_writer: commit_writer,

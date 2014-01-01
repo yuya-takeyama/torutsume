@@ -3,7 +3,7 @@ class TextServiceProvider < Dee::Rails::ServiceProvider
     singleton 'text.poster' do
       Torutsume::Text::Poster.new(
         texts_table: Text,
-        repository_creator: self['git.repository_creator'],
+        repository_writer: self['git.repository_writer'],
       )
     end
   end

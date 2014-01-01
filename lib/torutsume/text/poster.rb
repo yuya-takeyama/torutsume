@@ -1,9 +1,9 @@
 module Torutsume
   module Text
     class Poster
-      def initialize(texts_table: _, repository_creator: _)
+      def initialize(texts_table: _, repository_writer: _)
         @texts_table  = texts_table
-        @repo_creator = repository_creator
+        @repo_creator = repository_writer
       end
 
       def create(user: _, subject: _, body: _)

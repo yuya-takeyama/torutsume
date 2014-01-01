@@ -1,6 +1,6 @@
 module Torutsume
   module Git
-    class RepositoryCreator
+    class RepositoryWriter
       attr_reader :error
 
       def initialize(repository_class: _, repository_path_finder: _, commit_writer: _)

@@ -6,7 +6,7 @@ module Torutsume
       let(:poster) do
         Poster.new(
           texts_table: ::Text,
-          repository_creator: repository_creator,
+          repository_writer: repository_writer,
         )
       end
 
@@ -16,10 +16,10 @@ module Torutsume
         subject { poster.create(user: user, subject: 'Subject', body: 'Body') }
 
         context 'when succeeded' do
-          let(:repository_creator) do
-            repository_creator = double('repository_creator')
-            allow(repository_creator).to receive(:create).and_return(true)
-            repository_creator
+          let(:repository_writer) do
+            repository_writer = double('repository_writer')
+            allow(repository_writer).to receive(:create).and_return(true)
+            repository_writer
           end
 
           it 'should be ok result' do
@@ -32,11 +32,11 @@ module Torutsume
         end
 
         context 'when failed' do
-          let(:repository_creator) do
-            repository_creator = double('repository_creator')
-            allow(repository_creator).to receive(:create).and_return(false)
-            allow(repository_creator).to receive(:error).and_return(error)
-            repository_creator
+          let(:repository_writer) do
+            repository_writer = double('repository_writer')
+            allow(repository_writer).to receive(:create).and_return(false)
+            allow(repository_writer).to receive(:error).and_return(error)
+            repository_writer
           end
 
           let(:error) { StandardError.new 'Some error occured' }

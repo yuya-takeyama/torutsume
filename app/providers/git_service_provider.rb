@@ -1,7 +1,7 @@
 class GitServiceProvider < Dee::Rails::ServiceProvider
   provide do
-    singleton 'git.repository_creator' do
-      Torutsume::Git::RepositoryCreator.new(
+    singleton 'git.repository_writer' do
+      Torutsume::Git::RepositoryWriter.new(
         repository_class: Rugged::Repository,
         repository_path_finder: self['git.repository_path_finder'],
         commit_writer: self['git.commit_writer'],
