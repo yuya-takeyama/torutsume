@@ -15,7 +15,7 @@ module Torutsume
 
         @texts_table.transaction do
           begin
-            text.save!
+            raise ActiveRecord::Rollback unless text.save
             result = @repo_creator.create(text)
             raise ActiveRecord::Rollback unless result
             return PostResult.new(status: true, text: text)
