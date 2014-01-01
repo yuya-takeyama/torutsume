@@ -35,6 +35,24 @@ module Torutsume
         )
         PostResult.new(status: false, text: new_text, error: @error || nil)
       end
+
+      def update(user: _, text: text, message: nil)
+        @texts_table.transaction do
+          begin
+            raise 'Failed to update Text' unless text.save
+
+            result = @repository_writer.update(user: user, text: text, message: message)
+            raise @repository_writer.error unless result
+
+            return PostResult.new(status: true, text: text)
+          rescue => e
+            @error = e
+            raise ActiveRecord::Rollback.new(e)
+          end
+        end
+
+        PostResult.new(status: false, text: text, error: @error || nil)
+      end
     end
   end
 end

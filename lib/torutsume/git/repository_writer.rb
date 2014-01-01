@@ -27,6 +27,25 @@ module Torutsume
           nil
         end
       end
+
+      def update(user: user, text: text, message: nil)
+        path = @repository_path_finder.find(text)
+
+        begin
+          repo  = @repository_class.new(path)
+          @commit_writer.write(
+            repository: repo,
+            user: user,
+            text: text,
+            message: message,
+          )
+
+          repo
+        rescue => e
+          @error = e
+          nil
+        end
+      end
     end
   end
 end

@@ -23,7 +23,7 @@ module Torutsume
           options[:author] = {email: user.email, name: 'Test Author', time: Time.now}
           options[:committer] = {email: user.email, name: 'Test Author', time: Time.now}
           options[:message] = initial ? 'Initial commit' : (message || '')
-          options[:parents] = []
+          options[:parents] = repository.empty? ? [] : [repository.head.target].compact
           options[:update_ref] = 'HEAD'
 
           options
