@@ -1,5 +1,9 @@
 Torutsume::Application.routes.draw do
-  resources :texts
+  resources :texts do
+    member do
+      post 'comments' => 'comments#create'
+    end
+  end
 
   root to: 'home#index'
 

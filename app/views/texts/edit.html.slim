@@ -1,4 +1,5 @@
-.btn-group
-  = link_to 'Back', @text, class: 'btn btn-default'
+== render partial: 'nav', locals: {active_tab: :edit}
+
+h2 Edit Text
 
 == render 'form'

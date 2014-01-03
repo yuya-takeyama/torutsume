@@ -1,3 +1,57 @@
 // Place all the styles related to the texts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+table.torutsume_text {
+  border: 3px #f0f0f0 solid;
+  width: 100%;
+  margin: 1.2em;
+
+  td {
+    padding: 0.4em 0.5em;
+  }
+
+  td.line_number {
+    width: 4em;
+    color: #c0c0c0;
+    text-align: right;
+    border-right: 1px #c0c0c0 solid;
+  }
+
+  td.no_line_number {
+    border-right: 1px #c0c0c0 solid;
+  }
+
+  td.line_number_hover {
+    background-color: #ffffa0;
+    cursor: pointer;
+  }
+
+  td.content {
+  }
+
+  div.comments_wrapper {
+    font-size: 85%;
+    border: 1px #c0c0c0 solid;
+
+    div.comment {
+      margin: 0.8em;
+
+      div.comment_user {
+        padding: 0.8em;
+        border: 1px #aaa solid;
+        background-color: #e0e0ff;
+      }
+
+      div.comment_body {
+        padding: 0.8em;
+        border-left: 1px #aaa solid;
+        border-right: 1px #aaa solid;
+        border-bottom: 1px #aaa solid;
+      }
+    }
+
+    .open_line_comment_form_button {
+      margin: 0.8em;
+    }
+  }
+}

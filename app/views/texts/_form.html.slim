@@ -6,10 +6,11 @@
         - @text.errors.full_messages.each do |message|
           li = message
 
-  .field
+  .form-group
     = f.label :subject
-    = f.text_field :subject
-  .field
+    = f.text_field :subject, class: 'form-control'
+  .form-group
     = f.label :body
-    = f.text_area :body
-  .actions = f.submit 'Save'
+    = f.text_area :body, class: 'form-control', rows: '20'
+  .form-group
+    = f.submit 'Save', class: 'btn btn-default'
