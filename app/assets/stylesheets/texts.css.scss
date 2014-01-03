@@ -17,6 +17,15 @@ table.torutsume_text {
     border-right: 1px #c0c0c0 solid;
   }
 
+  td.no_line_number {
+    border-right: 1px #c0c0c0 solid;
+  }
+
+  td.line_number_hover {
+    background-color: #ffffa0;
+    cursor: pointer;
+  }
+
   td.content {
   }
 

@@ -8,14 +8,14 @@ table.torutsume_text
   tbody
     - @torutsume_text.each do |line|
       tr data-line-number=line.line_number
-        td.line_number
-          a.line_number_link data-text-id=@text.id data-commit-id=line.commit_id data-line-number=line.line_number data-orig-line-number=line.orig_line_number href="#"
+        td.line_number data-line-number=line.line_number
+          a.line_number_link data-text-id=@text.id data-commit-id=line.commit_id data-line-number=line.line_number data-orig-line-number=line.orig_line_number href="#LINE-#{line.line_number}"
             = line.line_number
         td.content = line.content
 
         - unless line.comments.empty?
           tr
-            td.line_number
+            td.no_line_number
             td
               .comments_wrapper
                 - line.comments.each do |comment|
@@ -24,7 +24,7 @@ table.torutsume_text
                     .comment_body = comment.body
 
       tr.hidden.line_comment_form data-line-comment-form-for=line.line_number
-        td.line_number
+        td.no_line_number
         td
           form role="form" action="/texts/#{@text.id}/comments" method="post"
             .form-group
