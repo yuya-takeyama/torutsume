@@ -1,6 +1,4 @@
-.btn-group
-  = link_to 'Back', texts_path, class: 'btn btn-default'
-  = link_to 'Edit', edit_text_path(@text), class: 'btn btn-default'
+== render partial: 'nav', locals: {active_tab: :text}
 
 h2 = @text.subject
 

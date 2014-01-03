@@ -1,0 +1,9 @@
+ol.breadcrumb
+  li
+    = link_to 'Top', texts_path
+
+ul.nav.nav-tabs
+  li class=(active_tab == :text ? 'active' : nil)
+    = link_to 'Text', @text
+  li class=(active_tab == :edit ? 'active' : nil)
+    = link_to 'Edit', edit_text_path(@text)
