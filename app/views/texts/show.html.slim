@@ -8,7 +8,7 @@ table.torutsume_text
   tbody
     - @torutsume_text.each do |line|
       tr data-line-number=line.line_number
-        td.line_number data-line-number=line.line_number
+        td.line_number data-line-number=line.line_number title="Comment on this line" data-placement="left" data-container="body"
           a.line_number_link data-text-id=@text.id data-commit-id=line.commit_id data-line-number=line.line_number data-orig-line-number=line.orig_line_number href="#LINE-#{line.line_number}"
             = line.line_number
         td.content = line.content

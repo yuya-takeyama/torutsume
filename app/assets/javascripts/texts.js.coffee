@@ -8,6 +8,8 @@ $ ->
       if $elem.attr('data-line-comment-form-for') == lineNumber
         $elem.toggleClass('hidden')
 
+  $('.line_number').tooltip()
+
   $('.line_number').on 'click', (event) ->
     event.preventDefault()
     $self = $(@)
