@@ -10,15 +10,13 @@ module Torutsume
       end
 
       def create(user: user, text: text)
-        begin
-          repo  = @repository_creator.create(text)
-          @commit_writer.write(repository: repo, user: user, text: text, initial: true)
+        repo  = @repository_creator.create(text)
+        @commit_writer.write(repository: repo, user: user, text: text, initial: true)
 
-          repo
-        rescue => e
-          @error = e
-          nil
-        end
+        repo
+      rescue => e
+        @error = e
+        nil
       end
 
       def update(user: user, text: text, message: nil)
