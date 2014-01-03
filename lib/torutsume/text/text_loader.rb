@@ -16,7 +16,7 @@ module Torutsume
         blame.each do |hunk|
           hunk.each do |line|
             comments = @comment_class.find_by_text_id_and_commit_id_and_line_number(text.id, line.commit_id, line.orig_line_number)
-            lines << ::Torutsume::Text::Line.new(content: line.content.sub(/(\r\n|\r|\n)$/, ''), line_number: line_number, comments: comments, commit_id: line.commit_id, orig_line_number: line.orig_line_number)
+            lines << ::Torutsume::Text::Line.new(content: line.content.sub(/(\r\n|\r|\n)$/, '').force_encoding('UTF-8'), line_number: line_number, comments: comments, commit_id: line.commit_id, orig_line_number: line.orig_line_number)
             line_number += 1
           end
         end
