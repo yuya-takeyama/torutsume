@@ -19,7 +19,7 @@ table.torutsume_text
                 - line.comments.each do |comment|
                   .comment
                     .comment_user = comment.user.email
-                    .comment_body = comment.body
+                    .comment_body == nl2br_h(comment.body)
                 button.btn.btn-default.open_line_comment_form_button data-line-number=line.line_number Comment on this line
 
       tr.hidden.line_comment_form data-line-comment-form-for=line.line_number
