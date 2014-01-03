@@ -22,3 +22,7 @@ $ ->
   $('.line_number').on 'mouseleave', (event) ->
     $self = $(@)
     $self.removeClass('line_number_hover')
+
+  $('.open_line_comment_form_button').on 'click', (event) ->
+    $self = $(@)
+    displayLineCommentForm($self.attr('data-line-number'))
