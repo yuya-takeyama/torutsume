@@ -1,3 +1,5 @@
+require 'torutsume/git/blame_line'
+require 'torutsume/git/blame_loader'
 require 'torutsume/git/commit_writer'
 require 'torutsume/git/repository_writer'
 require 'torutsume/git/repository_path_finder'

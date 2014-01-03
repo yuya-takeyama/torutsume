@@ -21,5 +21,13 @@ class GitServiceProvider < Dee::Rails::ServiceProvider
         commit_class: Rugged::Commit,
       )
     end
+
+    singleton 'git.blame_loader' do
+      Torutsume::Git::BlameLoader.new(
+        blame_class: Rugged::Blame,
+        commit_class: Rugged::Commit,
+        blob_class: Rugged::Blob,
+      )
+    end
   end
 end
