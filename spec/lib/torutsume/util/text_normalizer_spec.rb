@@ -20,6 +20,10 @@ module Torutsume
           expect(normalizer.normalize_multiple_lines("Foo\n\n")).to eq("Foo\n")
           expect(normalizer.normalize_multiple_lines("Foo\n\n\n")).to eq("Foo\n")
         end
+
+        it 'should be nil if the input is nil' do
+          expect(normalizer.normalize_multiple_lines(nil)).to be_nil
+        end
       end
     end
   end
