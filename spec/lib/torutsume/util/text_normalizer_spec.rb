@@ -21,6 +21,10 @@ module Torutsume
           expect(normalizer.normalize_multiple_lines("Foo\n\n\n")).to eq("Foo\n")
         end
 
+        it 'should not remove doubled LF except for end of the text' do
+          expect(normalizer.normalize_multiple_lines("Foo\n\n\nBar\n")).to eq("Foo\n\n\nBar\n")
+        end
+
         it 'should be nil if the input is nil' do
           expect(normalizer.normalize_multiple_lines(nil)).to be_nil
         end
