@@ -20,15 +20,13 @@ module Torutsume
       end
 
       def update(user: user, text: text, message: nil)
-        begin
-          repo  = @repository_loader.load(text)
-          @commit_writer.write(repository: repo, user: user, text: text, message: message)
+        repo  = @repository_loader.load(text)
+        @commit_writer.write(repository: repo, user: user, text: text, message: message)
 
-          repo
-        rescue => e
-          @error = e
-          nil
-        end
+        repo
+      rescue => e
+        @error = e
+        nil
       end
     end
   end
