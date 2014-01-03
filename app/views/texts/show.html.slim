@@ -27,13 +27,13 @@ table.torutsume_text
         td.line_number
         td
           form role="form" action="/texts/#{@text.id}/comments" method="post"
-            div.form-group
+            .form-group
               label Comment
               textarea.form-control rows=4 name="comment[body]"
-            div.form-group
+            .form-group
               input.btn.btn-default type="submit" value="Post"
-              input type="hidden" name="comment[commit_id]" value=line.commit_id
-              input type="hidden" name="comment[line_number]" value=line.orig_line_number
+              = hidden_field_tag 'comment[commit_id]', line.commit_id
+              = hidden_field_tag 'comment[line_number]', line.orig_line_number
               = hidden_field_tag 'authenticity_token', form_authenticity_token
 
 dl.dl-horizontal
