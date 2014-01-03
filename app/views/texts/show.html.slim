@@ -4,7 +4,12 @@
 
 h2 = @text.subject
 
-pre = @text.body
+table.torutsume_text
+  tbody
+    - @torutsume_text.each do |line|
+      tr
+        td.line_number = line.line_number
+        td.content = line.content
 
 dl.dl-horizontal
   dt Posted by

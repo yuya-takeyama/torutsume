@@ -80,6 +80,7 @@ class TextsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_text
       @text = Text.find(params[:id])
+      @torutsume_text = Dee['text.text_loader'].load(@text)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,3 +1,22 @@
 // Place all the styles related to the texts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+table.torutsume_text {
+  border: 3px #F0F0F0 solid;
+  width: 100%;
+  margin: 3px;
+
+  td {
+    padding: 0.2em 0.5em;
+  }
+
+  td.line_number {
+    width: 4em;
+    color: #c0c0c0;
+    text-align: right;
+    border-right: 1px #c0c0c0 solid;
+  }
+
+  td.content {
+  }
+}
