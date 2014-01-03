@@ -11,6 +11,16 @@ table.torutsume_text
         td.line_number = line.line_number
         td.content = line.content
 
+        - unless line.comments.empty?
+          tr
+            td.line_number
+            td
+              .comments_wrapper
+                - line.comments.each do |comment|
+                  .comment
+                    .comment_user = comment.user.email
+                    .comment_body = comment.body
+
 dl.dl-horizontal
   dt Posted by
   dd = @text.user.email

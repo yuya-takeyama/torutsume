@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 table.torutsume_text {
-  border: 3px #F0F0F0 solid;
+  border: 3px #f0f0f0 solid;
   width: 100%;
-  margin: 3px;
+  margin: 1.2em;
 
   td {
     padding: 0.2em 0.5em;
@@ -18,5 +18,27 @@ table.torutsume_text {
   }
 
   td.content {
+  }
+
+  div.comments_wrapper {
+    font-size: 85%;
+    border: 1px #c0c0c0 solid;
+
+    div.comment {
+      margin: 0.8em;
+
+      div.comment_user {
+        padding: 0.8em;
+        border: 1px #aaa solid;
+        background-color: #e0e0ff;
+      }
+
+      div.comment_body {
+        padding: 0.8em;
+        border-left: 1px #aaa solid;
+        border-right: 1px #aaa solid;
+        border-bottom: 1px #aaa solid;
+      }
+    }
   }
 }
