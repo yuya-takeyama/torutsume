@@ -26,7 +26,7 @@ table.torutsume_text
       tr.hidden.line_comment_form data-line-comment-form-for=line.line_number
         td.no_line_number
         td
-          form role="form" action="/texts/#{@text.id}/comments" method="post"
+          form role="form" action=comments_text_path(@text) method="post"
             .form-group
               label Comment
               textarea.form-control rows=4 name="comment[body]"
