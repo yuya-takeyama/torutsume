@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "texts/show" do
   before(:each) do
     @text = assign(:text, stub_model(Text,
-      :user => nil,
+      :user => build(:user),
       :subject => "Subject",
       :body => "MyText"
     ))
