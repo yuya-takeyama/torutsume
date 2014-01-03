@@ -1,8 +1,8 @@
 class CreateComments < ActiveRecord::Migration
   def change
     create_table :comments do |t|
-      t.reference :user
-      t.reference :text
+      t.references :user, index: true
+      t.references :text, index: true
       t.string :commit_id
       t.int :line_number
       t.text :body

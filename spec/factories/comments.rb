@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :comment do
-    user ""
-    text ""
+    user nil
+    text nil
     commit_id "MyString"
     line_number ""
     body "MyText"
