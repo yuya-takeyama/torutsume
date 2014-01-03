@@ -70,4 +70,6 @@ group :development, :test do
 
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'database_rewinder', '~> 0.0.2'
+
+  gem 'coveralls', require: false
 end
