@@ -2,10 +2,12 @@ class CommentsController < ApplicationController
   # POST /texts/1/comments
   def create
     @text = Text.find(params[:id])
-    if Comment.create({user_id: current_user.id, text_id: @text.id}.merge(comment_params))
+    comment = Comment.create({user_id: current_user.id, text_id: @text.id}.merge(comment_params))
+
+    if comment.save
       redirect_to @text, notice: 'Comment was successfully posted.'
     else
-      redirect_to @text, error: 'Failed to post comment.'
+      redirect_to @text, alert: 'Failed to post comment.'
     end
   end
 
