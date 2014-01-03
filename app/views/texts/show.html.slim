@@ -7,8 +7,10 @@ h2 = @text.subject
 table.torutsume_text
   tbody
     - @torutsume_text.each do |line|
-      tr
-        td.line_number = line.line_number
+      tr data-line-number=line.line_number
+        td.line_number
+          a.line_number_link data-text-id=@text.id data-commit-id=line.commit_id data-line-number=line.line_number data-orig-line-number=line.orig_line_number href="#"
+            = line.line_number
         td.content = line.content
 
         - unless line.comments.empty?
@@ -20,6 +22,18 @@ table.torutsume_text
                   .comment
                     .comment_user = comment.user.email
                     .comment_body = comment.body
+
+      tr.hidden.line_comment_form data-line-comment-form-for=line.line_number
+        td.line_number
+        td
+          form role="form" action="/texts/#{@text.id}/comments" method="post"
+            div.form-group
+              label Comment
+              textarea.form-control rows=4
+            div.form-group
+              input.btn.btn-default type="submit" value="Post"
+              input type="hidden" name="comment[commit_id]" value=line.commit_id
+              input type="hidden" name="comment[line_number]" value=line.orig_line_number
 
 dl.dl-horizontal
   dt Posted by
