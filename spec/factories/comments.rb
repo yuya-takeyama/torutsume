@@ -5,7 +5,7 @@ FactoryGirl.define do
     user nil
     text nil
     commit_id "MyString"
-    line_number ""
+    line_number 1
     body "MyText"
   end
 end
