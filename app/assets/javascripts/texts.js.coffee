@@ -6,7 +6,7 @@ $ ->
     $('tr.line_comment_form').each (i, elem) ->
       $elem = $(elem)
       if $elem.attr('data-line-comment-form-for') == lineNumber
-        $elem.removeClass('hidden')
+        $elem.toggleClass('hidden')
 
   $('.line_number_link').on 'click', (event) ->
     event.preventDefault()
