@@ -85,7 +85,8 @@ class TextsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def text_params
-      params.require(:text).permit(:subject, :body)
+      p = params.require(:text).permit(:subject, :body)
+      p.merge(body: Dee['util.text_normalizer'].normalize_multiple_lines(p[:body]))
     end
 
     def authenticate!
