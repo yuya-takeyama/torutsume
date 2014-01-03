@@ -11,7 +11,8 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      params.require(:comment).permit(:commit_id, :line_number, :body)
+      p = params.require(:comment).permit(:commit_id, :line_number, :body)
+      p.merge(body: Dee['util.text_normalizer'].normalize_multiple_lines(p[:body]))
     end
 
     def authenticate!
