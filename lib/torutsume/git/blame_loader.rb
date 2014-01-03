@@ -24,7 +24,7 @@ module Torutsume
           line_number = orig_start_line_number
 
           lines.map do |line|
-            line = ::Torutsume::Git::BlameLine.new(file: file, commit_id: final_commit_id, line_number: line_number, content: line)
+            line = ::Torutsume::Git::BlameLine.new(file: file, commit_id: final_commit_id, orig_line_number: line_number, content: line)
             line_number += 1
             line
           end
