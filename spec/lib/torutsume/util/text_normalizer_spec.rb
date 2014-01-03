@@ -28,6 +28,12 @@ module Torutsume
         it 'should be nil if the input is nil' do
           expect(normalizer.normalize_multiple_lines(nil)).to be_nil
         end
+
+        it 'should be empty if the input has no text' do
+          expect(normalizer.normalize_multiple_lines("")).to eq("")
+          expect(normalizer.normalize_multiple_lines("\n")).to eq("")
+          expect(normalizer.normalize_multiple_lines("\n\n")).to eq("")
+        end
       end
     end
   end

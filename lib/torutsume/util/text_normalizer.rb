@@ -6,6 +6,7 @@ module Torutsume
 
         text = text.gsub(/\r\n|\r/, "\n").gsub(/\n+\Z/, "\n")
         text += "\n" if text[-1] != "\n"
+        text = "" if text == "\n"
         text
       end
     end
