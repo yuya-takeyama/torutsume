@@ -30,7 +30,7 @@ table.torutsume_text
               label Comment
               textarea.form-control rows=4 name="comment[body]"
             .form-group
-              input.btn.btn-default type="submit" value="Post"
+              input.btn.btn-primary type="submit" value="Post"
               = hidden_field_tag 'comment[commit_id]', line.commit_id
               = hidden_field_tag 'comment[line_number]', line.orig_line_number
               = hidden_field_tag 'authenticity_token', form_authenticity_token
