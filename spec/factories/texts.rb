@@ -2,8 +2,9 @@
 
 FactoryGirl.define do
   factory :text do
-    user nil
-    subject "MyString"
-    body "MyText"
+    subject "Test Subject"
+    body "Test Body"
+
+    association :user, factory: :users
   end
 end

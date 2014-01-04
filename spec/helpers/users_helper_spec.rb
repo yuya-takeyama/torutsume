@@ -3,10 +3,10 @@ describe UsersHelper do
     subject { helper.link_to_user(user) }
 
     context 'when the user is present' do
-      let(:user) { build :user }
+      let(:user) { create :user }
 
       it 'should be link to users page' do
-        expect(subject).to eq('<a href="/users/1000">testuser</a>')
+        expect(subject).to eq('<a href="/users/testuser">testuser</a>')
       end
     end
 

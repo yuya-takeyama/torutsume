@@ -2,11 +2,7 @@ require 'spec_helper'
 
 describe "texts/show" do
   before(:each) do
-    @text = assign(:text, stub_model(Text,
-      :user => build(:user),
-      :subject => "Subject",
-      :body => "MyText"
-    ))
+    @text = assign(:text, Text.create(user: build(:user), subject: "Subject", body: "MyText"))
     @torutsume_text = assign(:torutsume_text, ::Torutsume::Text::Text.new(lines: []))
   end
 
