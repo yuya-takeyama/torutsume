@@ -19,7 +19,7 @@ table.torutsume_text
                 - line.comments.each do |comment|
                   .comment
                     .comment_user
-                      = link_to_user comment.user
+                      span.username = link_to_user comment.user
                       span.pull-right
                         time datetime=comment.created_at = time_ago_in_words(comment.created_at) + " ago"
                     .comment_body == nl2br_h(comment.body)

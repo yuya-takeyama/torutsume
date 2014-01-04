@@ -40,6 +40,10 @@ table.torutsume_text {
         padding: 0.8em;
         border: 1px #aaa solid;
         background-color: #e0e0ff;
+
+        .username {
+          font-weight: bold;
+        }
       }
 
       div.comment_body {
