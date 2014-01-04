@@ -19,4 +19,12 @@ class User < ActiveRecord::Base
     data = access_token.extra.raw_info
     User.where(:facebook_id => data.id).first
   end
+
+  def name_for_git
+    if name.blank?
+      username
+    else
+      name
+    end
+  end
 end
