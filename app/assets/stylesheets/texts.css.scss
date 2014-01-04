@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 table.torutsume_text {
   border: 3px #f0f0f0 solid;
-  width: 100%;
-  margin: 1.2em;
+  min-width: 100%;
+  margin: 1.2em auto;
 
   td {
     padding: 0.4em 0.5em;
