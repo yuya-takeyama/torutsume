@@ -14,7 +14,8 @@ table.table.table-striped.table-hover
       tr
         td = link_to text.id, text
         td = link_to text.subject, text
-        td = text.user.email
-        td = text.created_at
+        td = link_to_user text.user
+        td
+          time datetime=text.created_at = time_ago_in_words(text.created_at) + " ago"
 
 = link_to 'New Text', new_text_path
