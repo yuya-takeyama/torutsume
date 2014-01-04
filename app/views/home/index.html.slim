@@ -1,2 +1,8 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
+.jumbotron
+  h1 Torutsume
+  p Torutsume is Git based proofreading tool on the Web
+
+  - if user_signed_in?
+    p = link_to 'Post a text', new_text_path, class: 'btn btn-primary btn-lg'
+  - else
+    p = link_to 'Sign in with Facebook', omniauth_authorize_path(:user, :facebook), class: 'btn btn-primary btn-lg'
