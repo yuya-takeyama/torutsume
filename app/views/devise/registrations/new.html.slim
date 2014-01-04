@@ -1,11 +1,26 @@
 h2 Sign up
 
 = form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
-  = devise_error_messages!
+  - if @user.errors.any?
+    .panel.panel-warning
+      .panel-heading = "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      ul.list-group
+        - @user.errors.full_messages.each do |message|
+          li.list-group-item = message
+
+  .form-group
+    = f.label :username
+    = f.text_field :username, autofocus: true, value: (params[:user] and params[:user][:username] ? params[:user][:username] : nil), class: 'form-control'
+    span.help-block Used as login name. Only alphabets and numbers.
 
   .form-group
     = f.label :email
-    = f.email_field :email, autofocus: true, value: (session['account.sign_up'] and session['account.sign_up']['email'] ? session['account.sign_up']['email'] : nil), class: 'form-control'
+    = f.email_field :email, value: (session['account.sign_up'] and session['account.sign_up']['email'] ? session['account.sign_up']['email'] : nil), class: 'form-control'
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, value: (params[:user] and params[:user][:name] ? params[:user][:name] : nil), class: 'form-control'
+    span.help-block Userd as Git author name. Generally your fullname.
 
   .form-group
     = f.label :password

@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  has_many :texts
+  has_many :comments
+
+  validates_presence_of :username
+  validates_format_of :username, with: /\A[a-z][a-z0-9\-]{,19}\z/i
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,6 +18,8 @@ class User < ActiveRecord::Base
         user.facebook_id    = data['uid']
         user.facebook_token = data['credentials']['token']
       end
+      user.username = params[:username]
+      user.name     = params[:name]
     end
   end
 
