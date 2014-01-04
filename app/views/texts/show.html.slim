@@ -1,0 +1,49 @@
+== render partial: 'nav', locals: {active_tab: :text}
+
+h2 = @text.subject
+
+table.torutsume_text
+  tbody
+    - @torutsume_text.each do |line|
+      tr data-line-number=line.line_number
+        td.line_number data-line-number=line.line_number title="Comment on this line" data-placement="bottom" data-container="body"
+          a.line_number_link data-text-id=@text.id data-commit-id=line.commit_id data-line-number=line.line_number data-orig-line-number=line.orig_line_number href="#LINE-#{line.line_number}"
+            = line.line_number
+        td.content = line.content
+
+        - unless line.comments.empty?
+          tr
+            td.no_line_number
+            td
+              .comments_wrapper
+                - line.comments.each do |comment|
+                  .comment
+                    .comment_user
+                      span.username = link_to_user comment.user
+                      span.pull-right
+                        time datetime=comment.created_at = time_ago_in_words(comment.created_at) + " ago"
+                    .comment_body == nl2br_h(comment.body)
+                button.btn.btn-default.open_line_comment_form_button data-line-number=line.line_number Comment on this line
+
+      tr.hidden.line_comment_form data-line-comment-form-for=line.line_number
+        td.no_line_number
+        td
+          form role="form" action=comments_text_path(@text) method="post"
+            .form-group
+              label Comment
+              textarea.form-control rows=4 name="comment[body]"
+            .form-group
+              input.btn.btn-primary type="submit" value="Post"
+              = hidden_field_tag 'comment[commit_id]', line.commit_id
+              = hidden_field_tag 'comment[line_number]', line.orig_line_number
+              = hidden_field_tag 'authenticity_token', form_authenticity_token
+
+dl.dl-horizontal
+  dt Posted by
+  dd = link_to_user @text.user
+  dt Posted at
+  dd
+    time datetime=@text.created_at = time_ago_in_words(@text.created_at) + " ago"
+  dt Updated at
+  dd
+    time datetime=@text.updated_at = time_ago_in_words(@text.updated_at) + " ago"

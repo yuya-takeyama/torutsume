@@ -1,0 +1,12 @@
+language: ruby
+
+rvm:
+  - 2.0.0
+  - 2.1.0
+
+evn:
+  - FACEBOOK_APP_ID="DUMMY" FACEBOOK_APP_SECRET="DUMMY"
+
+matrix:
+  allow_failures:
+    - rvm: 2.1.0

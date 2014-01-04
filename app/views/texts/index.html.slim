@@ -1,0 +1,21 @@
+h1 Listing texts
+
+table.table.table-striped.table-hover
+  thead
+    tr
+      th #
+      th Subject
+      th Posted by
+      th Posted at
+
+  tbody
+
+    - @texts.each do |text|
+      tr
+        td = link_to text.id, text
+        td = link_to text.subject, text
+        td = link_to_user text.user
+        td
+          time datetime=text.created_at = time_ago_in_words(text.created_at) + " ago"
+
+= link_to 'New Text', new_text_path

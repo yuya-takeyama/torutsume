@@ -1,0 +1,12 @@
+*.swp
+/.bundle
+/config/application.yml
+/coverage/*
+!/coverage/.keep
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/log/*.log
+/repo/*
+!/repo/.keep
+/tmp
+/vendor/bundle
