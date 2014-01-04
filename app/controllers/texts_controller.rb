@@ -21,6 +21,7 @@ class TextsController < ApplicationController
 
   # GET /texts/1/edit
   def edit
+    @commit_message = true
   end
 
   # POST /texts
@@ -52,7 +53,7 @@ class TextsController < ApplicationController
       user: current_user,
       text: @text,
       params: text_params,
-      message: params[:commit_message]
+      message: Dee['util.text_normalizer'].normalize_multiple_lines(params[:commit_message]),
     )
 
     respond_to do |format|
