@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/yuya-takeyama/torutsume/badge.png?branch=develop)](https://coveralls.io/r/yuya-takeyama/torutsume?branch=develop)
 [![Analytics](https://ga-beacon.appspot.com/UA-12392004-6/yuya-takeyama/torutsume)](https://github.com/igrigorik/ga-beacon)
 
-Web-based proofreading tool
+Git-based proofreading tool on the Web
 
 ## Installation
 
