@@ -4,11 +4,19 @@ h2 Edit Account
   = devise_error_messages!
 
   .form-group
+    = f.label :username
+    p.form-control-static = @user.username
+
+  .form-group
     = f.label :email
     = f.email_field :email, :autofocus => true, class: 'form-control'
 
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     div = "Currently waiting confirmation for: #{resource.unconfirmed_email}"
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
 
   .form-group
     = f.label :password
