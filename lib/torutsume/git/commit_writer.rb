@@ -20,8 +20,8 @@ module Torutsume
 
           options[:tree] = index.write_tree(repository)
 
-          options[:author] = {email: user.email, name: 'Test Author', time: Time.now}
-          options[:committer] = {email: user.email, name: 'Test Author', time: Time.now}
+          options[:author] = {email: user.email, name: user.name_for_git, time: Time.now}
+          options[:committer] = {email: user.email, name: user.name_for_git, time: Time.now}
           options[:message] = initial ? 'Initial commit' : (message || '')
           options[:parents] = repository.empty? ? [] : [repository.head.target].compact
           options[:update_ref] = 'HEAD'

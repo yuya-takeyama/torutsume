@@ -18,7 +18,10 @@ table.torutsume_text
               .comments_wrapper
                 - line.comments.each do |comment|
                   .comment
-                    .comment_user = comment.user.email
+                    .comment_user
+                      span.username = link_to_user comment.user
+                      span.pull-right
+                        time datetime=comment.created_at = time_ago_in_words(comment.created_at) + " ago"
                     .comment_body == nl2br_h(comment.body)
                 button.btn.btn-default.open_line_comment_form_button data-line-number=line.line_number Comment on this line
 
@@ -30,15 +33,17 @@ table.torutsume_text
               label Comment
               textarea.form-control rows=4 name="comment[body]"
             .form-group
-              input.btn.btn-default type="submit" value="Post"
+              input.btn.btn-primary type="submit" value="Post"
               = hidden_field_tag 'comment[commit_id]', line.commit_id
               = hidden_field_tag 'comment[line_number]', line.orig_line_number
               = hidden_field_tag 'authenticity_token', form_authenticity_token
 
 dl.dl-horizontal
   dt Posted by
-  dd = @text.user.email
+  dd = link_to_user @text.user
   dt Posted at
-  dd = @text.created_at
+  dd
+    time datetime=@text.created_at = time_ago_in_words(@text.created_at) + " ago"
   dt Updated at
-  dd = @text.updated_at
+  dd
+    time datetime=@text.updated_at = time_ago_in_words(@text.updated_at) + " ago"

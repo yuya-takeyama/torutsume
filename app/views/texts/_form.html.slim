@@ -9,8 +9,16 @@
   .form-group
     = f.label :subject
     = f.text_field :subject, class: 'form-control'
+
   .form-group
     = f.label :body
-    = f.text_area :body, class: 'form-control', rows: '20'
+    = f.text_area :body, class: 'form-control', rows: '20', autofocus: true
+
+  - if @commit_message
+    .form-group
+      label for="commit_message" Revision Comment (Optional)
+      = text_area nil, :commit_message, id: 'commit_message', class: 'form-control', rows: '3'
+      span.help-block Explain what you did in this revision
+
   .form-group
-    = f.submit 'Save', class: 'btn btn-default'
+    = f.submit 'Save', class: 'btn btn-primary'
