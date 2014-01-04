@@ -1,0 +1,29 @@
+h1 = @user.username
+
+h2 Profile
+
+dl
+  dt Name
+  dd = @user.name
+  dt Registered at
+  dd = time_ago_in_words(@user.created_at) + " ago"
+  dt Last signnd in
+  dd = time_ago_in_words(@user.last_sign_in_at) + " ago"
+
+h2 Texts
+
+table.table.table-striped.table-hover
+  thead
+    tr
+      th #
+      th Subject
+      th Posted at
+
+  tbody
+
+    - @texts.each do |text|
+      tr
+        td = link_to text.id, text
+        td = link_to text.subject, text
+        td
+          time datetime=text.created_at = time_ago_in_words(text.created_at) + " ago"

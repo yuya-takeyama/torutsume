@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook],
          :stretches => 10
 
+  include FriendlyId
+  friendly_id :username
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session['devise.facebook_data']
