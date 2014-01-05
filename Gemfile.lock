@@ -132,6 +132,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.2)
     multipart-post (1.2.0)
+    mysql2 (0.3.14)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -281,6 +282,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   json (>= 1.7)
+  mysql2
   omniauth (~> 1.1.4)
   omniauth-facebook (~> 1.5.1)
   pry-byebug (~> 1.2.0)
