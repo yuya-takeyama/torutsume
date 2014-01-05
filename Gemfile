@@ -3,8 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.0.2'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'mysql2', group: 'production'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -53,6 +52,8 @@ gem 'dee-rails', '~> 0.0.1'
 gem 'rugged', git: 'git://github.com/libgit2/rugged.git', branch: 'development', submodules: true
 
 group :development, :test do
+  gem 'sqlite3'
+
   gem 'spring', '~> 1.0.0'
   gem 'rspec-rails', '~> 2.0'
   gem 'guard-rspec', '~> 4.2.3'
